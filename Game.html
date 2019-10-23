@@ -1,42 +1,23 @@
-<script>
-  const beats = {
-    "rock": "scissors",
-    "paper": "rock",
-    "scissors": "paper"
-  };
-
-  function computerPlay() {
-    return Object.keys(beats)[Math.floor(Math.random() * 3)];
-  }
-
-  function playRound(playerSelection, computerSelection) {
-    playerSelection = playerSelection.toLowerCase();
-    computerSelection = computerSelection.toLowerCase();
-    if (beats[playerSelection] === computerSelection) {
-      return `You Win! ${playerSelection} beats ${computerSelection}!`; 
-    }
-    else if (beats[computerSelection] === playerSelection) {
-      return `You Lose! ${computerSelection} beats ${playerSelection}!`; 
-    }
-    return `You Tie! ${playerSelection} ties ${computerSelection}!`;
-  }
-
-  function game() {
-    let keepPlaying = true;
-    let compScore = 0;
-    let playerScore = 0;
-
-    console.log("Rock, Paper, Scissors...")
-    for (let i = 0; i < 5; i++) {
-      const move = prompt("Enter a move: ");
-      let result = playRound(move, computerPlay());
-      console.log(result);
-      if (result.includes('Win')) playerScore += 1;
-      else if (result.includes('Lose')) compScore += 1;
-    }
-
-    if (playerScore > compScore) console.log('You won the match!');
-    else if (playerScore < compScore) console.log('You lost the match!');
-    else console.log('You tied for the match!');
-  }
-</script>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rock, Paper, Scissors</title>
+    <link rel="stylesheet" href="./Game.css">
+  </head>
+  <body>
+    <h1>Rock, Paper, Scissors</h1>
+    <div id="buttons">
+      <button id="rock">Rock</button>
+      <button id="paper">Paper</button>
+      <button id="scissors">Scissors</button>
+    </div>
+    <h2 id="results"></h2>
+    <div id="scores">
+      <h3>Player Score: <span id="playerScore">0</span></h3>
+      <h3>Computer Score: <span id="compScore">0</span></h3>
+    </div>
+    <h1 id="finalResults">
+    </h1>
+  </body>
+  <script src="./Game.js" type="text/javascript"></script>
+</html>
